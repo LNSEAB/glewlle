@@ -1,0 +1,26 @@
+CXX=g++
+CXXFLAGS=-std=c++11 -Wall -Wextra -O2 -g `pkg-config --cflags gtk+-3.0`
+LDFLAGS=
+
+BOOST_INCLUDE=-I/usr/include
+BOOST_LIBPATH=-L/usr/lib
+BOOST_LIBS=
+NCLR_INCLUDE=
+
+INCLUDE=$(BOOST_INCLUDE) $(NCLR_INCLUDE)
+LIBPATH=$(BOOST_LIBPATH)
+LIBS=$(BOOST_LIBS) -lGL -lGLU -lX11 `pkg-config --libs gtk+-3.0`
+
+%.o: %.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCLUDE) $^ -o $@
+
+all: test
+
+test: test.o
+	$(CXX) $(LDFLAGS) $(LIBPATH) $^ $(LIBS) -o $@
+
+.PHONY: clean
+
+clean:
+	-rm *.exe
+	-rm *.o

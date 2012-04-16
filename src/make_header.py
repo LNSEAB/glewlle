@@ -4,9 +4,11 @@ import re
 reg_prototype = re.compile( '^GLAPI (\w+) APIENTRY ([\w \*]+) \((.*)\);' )
 reg_arg_name = re.compile( ' \**(\w+)$' )
 
-def write_file(src_f, dst_f) :
-	for i in src_f :
-		dst_f.write( i )
+def write_file(src, dst_f) :
+	with open( src, 'r' ) as src_f :
+		for i in src_f :
+			dst_f.write( i )
+		dst_f.write( '\n' )
 
 def parse_functions(src_f) :
 	funcs = []
@@ -39,7 +41,7 @@ def write_function(func, dst_f) :
 	dst_f.write( \
 			'inline ' + func[0] + ' ' + func[1] + '(' + arguments + ')\n{\n' \
 			+ '\ttypedef ' + func[0] + ' (*proc_type)(' + arguments + ');\n' \
-			+ '\tstatic proc_type func_ptr = reinterpret_cast<proc_type>( wglGetProcAddress( "' + func[1] + '" ) );\n' \
+			+ '\tstatic proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "' + func[1] + '" ) );\n' \
 			+ '\tif( !func_ptr ) { throw std::runtime_error( "glewlle error : ' + func[1] + '" ); }\n' \
 			+ '\t' + ret + '(*func_ptr)( ' + ', '.join( names ) + ' );\n' \
 			+ '}\n\n' )
@@ -47,17 +49,14 @@ def write_function(func, dst_f) :
 def main() :
 	glewlle = open( '../glewlle.hpp', 'w' )
 
-	with open( 'license.txt', 'r' ) as f :
-		write_file( f, glewlle )
-	glewlle.write( '\n' )
+	write_file( 'license.txt', glewlle )
 
 	include_guard = 'GLEWLLE_HPP_'
 	glewlle.write( '#ifndef ' + include_guard + '\n' )
 	glewlle.write( '#define ' + include_guard + '\n\n' )
 
-	with open( 'include.pp', 'r' ) as f :
-		write_file( f, glewlle )
-	glewlle.write( '\n' )
+	write_file( 'include.pp', glewlle )
+	write_file( 'get_proc_address.cpp_', glewlle )
 
 	with open( '../glext.h', 'r' ) as f :
 		funcs = parse_functions( f )

@@ -9,7 +9,15 @@
 #	if !defined( NOMINMAX )
 #		define NOMINMAX
 #	endif
+#
+#	define GLEWLLE_WINDOWS
 #	include <windows.h>
 #endif
 
+#if defined( __linux ) || defined( __linux__ ) || defined( linux )
+#	define GLEWLLE_LINUX
+#	include <GL/glx.h>
+#endif
+
+#include <GL/gl.h>
 #include "glext.h"

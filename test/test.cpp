@@ -103,11 +103,9 @@ int main()
 		auto const gl = musket::make_widget<musket::opengl_panel<>>(
 				wnd, point_type( 0, 0 ), size_type( 640, 480 ), musket::opengl::z_depth( 24 ) );
 		
-		musket::opengl::make_current( gl );
-		
-		triangle tri;
 		musket::opengl::call( gl, glClearColor, 0, 0, 0.3, 0 );
 		musket::opengl::call( gl, glClearDepth, 1.0f );
+		triangle tri;
 
 		musket::show( wnd );
 
