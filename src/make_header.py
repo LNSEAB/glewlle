@@ -1,7 +1,7 @@
 import sys
 import re
 		
-reg_prototype = re.compile( '^GLAPI (\w+) APIENTRY ([\w \*]+) \((.*)\);' )
+reg_prototype = re.compile( '^GLAPI ([\w \*]+) APIENTRY ([\w \*]+) \((.*)\);' )
 reg_arg_name = re.compile( ' \**(\w+)$' )
 
 def write_file(src, dst_f) :
