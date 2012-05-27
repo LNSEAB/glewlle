@@ -1,4 +1,5 @@
 glewlle.hppをインクルードするだけでOpenGL拡張が使えるライブラリ。
+OpenGLなどの関係するライブラリのリンクは必要ですが。
 
 glewlle.hpp     : glext.h相当
 glewlle_wgl.hpp : wglext.h相当
