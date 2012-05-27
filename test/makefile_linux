@@ -7,9 +7,9 @@ BOOST_LIBPATH=-L/usr/lib
 BOOST_LIBS=
 NCLR_INCLUDE=
 
-INCLUDE=$(BOOST_INCLUDE) $(NCLR_INCLUDE)
+INCLUDE=$(BOOST_INCLUDE) $(NCLR_INCLUDE) -I..
 LIBPATH=$(BOOST_LIBPATH)
-LIBS=$(BOOST_LIBS) -lGL -lGLU -lX11 `pkg-config --libs gtk+-3.0`
+LIBS=$(BOOST_LIBS) -pthread -lGL -lGLU -lX11 `pkg-config --libs gtk+-3.0`
 
 %.o: %.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCLUDE) $^ -o $@

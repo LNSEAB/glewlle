@@ -2,6 +2,11 @@
 #include <musket/musket.hpp>
 #include <musket/opengl.hpp>
 #include "../glewlle.hpp"
+#if defined( NCLR_WINDOWS )
+#	include "../glewlle_wgl.hpp"
+#else
+#	include "../glewlle_glx.hpp"
+#endif
 
 class triangle
 {

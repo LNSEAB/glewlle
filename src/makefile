@@ -1,4 +1,5 @@
 TARGET=../glewlle.hpp
+SRC=../glext.h ../wglext.h ../glxext.h
 
-$(TARGET): license.txt include.pp get_proc_address.cpp_ ../glext.h make_header.py
-	python make_header.py
+$(TARGET): $(SRC) license.txt include.pp glewlle_include.pp glewlle_make_header.py
+	python glewlle_make_header.py

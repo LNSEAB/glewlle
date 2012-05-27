@@ -20,4 +20,22 @@
 #endif
 
 #include <GL/gl.h>
-#include "glext.h"
+
+namespace glewlle {
+
+#if defined( GLEWLLE_WINDOWS )
+	typedef decltype( wglGetProcAddress( std::declval<char const*>() ) ) proc_address_type;
+#elif defined( GLEWLLE_LINUX )
+	typedef decltype( glXGetProcAddress( std::declval<GLubyte const*>() ) ) proc_address_type;
+#endif
+
+	inline proc_address_type get_proc_address(char const* name)
+	{
+#if defined( GLEWLLE_WINDOWS )
+		return wglGetProcAddress( name );
+#elif defined( GLEWLLE_LINUX )
+		return glXGetProcAddress( reinterpret_cast<GLubyte const*>( name ) );
+#endif
+	}
+
+} // namespace glewlle
