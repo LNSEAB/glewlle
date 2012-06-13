@@ -5,6 +5,8 @@ glewlle.hpp     : glext.h相当
 glewlle_wgl.hpp : wglext.h相当
 glewlle_glx.hpp : glxext.h相当
 
+また、glewlle.hppならglext.hのように*.hppに対応する*.hは必要です。
+
 Copyright (C) 2011-2012 LNSEAB
 
 glext.h、wglext.h、glxext.h、glewlle.hpp、glewlle_wgl.hpp、glewlle_glx.hppは以下に従います。
