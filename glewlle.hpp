@@ -751,20 +751,20 @@ inline void APIENTRY glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, G
 	return (*func_ptr)( sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha );
 }
 
-inline void APIENTRY glMultiDrawArrays(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+inline void APIENTRY glMultiDrawArrays(GLenum mode, const GLint *first, const GLsizei *count, GLsizei drawcount)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
+	typedef void APIENTRY (*proc_type)(GLenum mode, const GLint *first, const GLsizei *count, GLsizei drawcount);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glMultiDrawArrays" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glMultiDrawArrays" ); }
-	return (*func_ptr)( mode, first, count, primcount );
+	return (*func_ptr)( mode, first, count, drawcount );
 }
 
-inline void APIENTRY glMultiDrawElements(GLenum mode, const GLsizei *count, GLenum type, const GLvoid* *indices, GLsizei primcount)
+inline void APIENTRY glMultiDrawElements(GLenum mode, const GLsizei *count, GLenum type, const GLvoid* const *indices, GLsizei drawcount)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, const GLsizei *count, GLenum type, const GLvoid* *indices, GLsizei primcount);
+	typedef void APIENTRY (*proc_type)(GLenum mode, const GLsizei *count, GLenum type, const GLvoid* const *indices, GLsizei drawcount);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glMultiDrawElements" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glMultiDrawElements" ); }
-	return (*func_ptr)( mode, count, type, indices, primcount );
+	return (*func_ptr)( mode, count, type, indices, drawcount );
 }
 
 inline void APIENTRY glPointParameterf(GLenum pname, GLfloat param)
@@ -1527,9 +1527,9 @@ inline void APIENTRY glLinkProgram(GLuint program)
 	return (*func_ptr)( program );
 }
 
-inline void APIENTRY glShaderSource(GLuint shader, GLsizei count, const GLchar* *string, const GLint *length)
+inline void APIENTRY glShaderSource(GLuint shader, GLsizei count, const GLchar* const *string, const GLint *length)
 {
-	typedef void APIENTRY (*proc_type)(GLuint shader, GLsizei count, const GLchar* *string, const GLint *length);
+	typedef void APIENTRY (*proc_type)(GLuint shader, GLsizei count, const GLchar* const *string, const GLint *length);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glShaderSource" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glShaderSource" ); }
 	return (*func_ptr)( shader, count, string, length );
@@ -2127,9 +2127,9 @@ inline void APIENTRY glBindBufferBase(GLenum target, GLuint index, GLuint buffer
 	return (*func_ptr)( target, index, buffer );
 }
 
-inline void APIENTRY glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar* *varyings, GLenum bufferMode)
+inline void APIENTRY glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar* const *varyings, GLenum bufferMode)
 {
-	typedef void APIENTRY (*proc_type)(GLuint program, GLsizei count, const GLchar* *varyings, GLenum bufferMode);
+	typedef void APIENTRY (*proc_type)(GLuint program, GLsizei count, const GLchar* const *varyings, GLenum bufferMode);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTransformFeedbackVaryings" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTransformFeedbackVaryings" ); }
 	return (*func_ptr)( program, count, varyings, bufferMode );
@@ -2511,20 +2511,20 @@ inline const GLubyte * APIENTRY glGetStringi(GLenum name, GLuint index)
 	return (*func_ptr)( name, index );
 }
 
-inline void APIENTRY glDrawArraysInstanced(GLenum mode, GLint first, GLsizei count, GLsizei primcount)
+inline void APIENTRY glDrawArraysInstanced(GLenum mode, GLint first, GLsizei count, GLsizei instancecount)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
+	typedef void APIENTRY (*proc_type)(GLenum mode, GLint first, GLsizei count, GLsizei instancecount);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDrawArraysInstanced" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDrawArraysInstanced" ); }
-	return (*func_ptr)( mode, first, count, primcount );
+	return (*func_ptr)( mode, first, count, instancecount );
 }
 
-inline void APIENTRY glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+inline void APIENTRY glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei instancecount)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+	typedef void APIENTRY (*proc_type)(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei instancecount);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDrawElementsInstanced" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDrawElementsInstanced" ); }
-	return (*func_ptr)( mode, count, type, indices, primcount );
+	return (*func_ptr)( mode, count, type, indices, instancecount );
 }
 
 inline void APIENTRY glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer)
@@ -4519,9 +4519,9 @@ inline GLboolean APIENTRY glIsVertexArray(GLuint array)
 	return (*func_ptr)( array );
 }
 
-inline void APIENTRY glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar* *uniformNames, GLuint *uniformIndices)
+inline void APIENTRY glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar* const *uniformNames, GLuint *uniformIndices)
 {
-	typedef void APIENTRY (*proc_type)(GLuint program, GLsizei uniformCount, const GLchar* *uniformNames, GLuint *uniformIndices);
+	typedef void APIENTRY (*proc_type)(GLuint program, GLsizei uniformCount, const GLchar* const *uniformNames, GLuint *uniformIndices);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetUniformIndices" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetUniformIndices" ); }
 	return (*func_ptr)( program, uniformCount, uniformNames, uniformIndices );
@@ -4599,20 +4599,20 @@ inline void APIENTRY glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GL
 	return (*func_ptr)( mode, start, end, count, type, indices, basevertex );
 }
 
-inline void APIENTRY glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
+inline void APIENTRY glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei instancecount, GLint basevertex)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex);
+	typedef void APIENTRY (*proc_type)(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei instancecount, GLint basevertex);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDrawElementsInstancedBaseVertex" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDrawElementsInstancedBaseVertex" ); }
-	return (*func_ptr)( mode, count, type, indices, primcount, basevertex );
+	return (*func_ptr)( mode, count, type, indices, instancecount, basevertex );
 }
 
-inline void APIENTRY glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei *count, GLenum type, const GLvoid* *indices, GLsizei primcount, const GLint *basevertex)
+inline void APIENTRY glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei *count, GLenum type, const GLvoid* const *indices, GLsizei drawcount, const GLint *basevertex)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, const GLsizei *count, GLenum type, const GLvoid* *indices, GLsizei primcount, const GLint *basevertex);
+	typedef void APIENTRY (*proc_type)(GLenum mode, const GLsizei *count, GLenum type, const GLvoid* const *indices, GLsizei drawcount, const GLint *basevertex);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glMultiDrawElementsBaseVertex" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glMultiDrawElementsBaseVertex" ); }
-	return (*func_ptr)( mode, count, type, indices, primcount, basevertex );
+	return (*func_ptr)( mode, count, type, indices, drawcount, basevertex );
 }
 
 inline void APIENTRY glProvokingVertex(GLenum mode)
@@ -5663,9 +5663,9 @@ inline void APIENTRY glActiveShaderProgram(GLuint pipeline, GLuint program)
 	return (*func_ptr)( pipeline, program );
 }
 
-inline GLuint APIENTRY glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar* *strings)
+inline GLuint APIENTRY glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar* const *strings)
 {
-	typedef GLuint APIENTRY (*proc_type)(GLenum type, GLsizei count, const GLchar* *strings);
+	typedef GLuint APIENTRY (*proc_type)(GLenum type, GLsizei count, const GLchar* const *strings);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glCreateShaderProgramv" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glCreateShaderProgramv" ); }
 	return (*func_ptr)( type, count, strings );
@@ -6487,44 +6487,44 @@ inline void APIENTRY glGetnUniformdvARB(GLuint program, GLint location, GLsizei 
 	return (*func_ptr)( program, location, bufSize, params );
 }
 
-inline void APIENTRY glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei count, GLsizei primcount, GLuint baseinstance)
+inline void APIENTRY glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, GLint first, GLsizei count, GLsizei primcount, GLuint baseinstance);
+	typedef void APIENTRY (*proc_type)(GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDrawArraysInstancedBaseInstance" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDrawArraysInstancedBaseInstance" ); }
-	return (*func_ptr)( mode, first, count, primcount, baseinstance );
+	return (*func_ptr)( mode, first, count, instancecount, baseinstance );
 }
 
-inline void APIENTRY glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei primcount, GLuint baseinstance)
+inline void APIENTRY glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLuint baseinstance)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei primcount, GLuint baseinstance);
+	typedef void APIENTRY (*proc_type)(GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLuint baseinstance);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDrawElementsInstancedBaseInstance" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDrawElementsInstancedBaseInstance" ); }
-	return (*func_ptr)( mode, count, type, indices, primcount, baseinstance );
+	return (*func_ptr)( mode, count, type, indices, instancecount, baseinstance );
 }
 
-inline void APIENTRY glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance)
+inline void APIENTRY glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance);
+	typedef void APIENTRY (*proc_type)(GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDrawElementsInstancedBaseVertexBaseInstance" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDrawElementsInstancedBaseVertexBaseInstance" ); }
-	return (*func_ptr)( mode, count, type, indices, primcount, basevertex, baseinstance );
+	return (*func_ptr)( mode, count, type, indices, instancecount, basevertex, baseinstance );
 }
 
-inline void APIENTRY glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei primcount)
+inline void APIENTRY glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei instancecount)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, GLuint id, GLsizei primcount);
+	typedef void APIENTRY (*proc_type)(GLenum mode, GLuint id, GLsizei instancecount);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDrawTransformFeedbackInstanced" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDrawTransformFeedbackInstanced" ); }
-	return (*func_ptr)( mode, id, primcount );
+	return (*func_ptr)( mode, id, instancecount );
 }
 
-inline void APIENTRY glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei primcount)
+inline void APIENTRY glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount)
 {
-	typedef void APIENTRY (*proc_type)(GLenum mode, GLuint id, GLuint stream, GLsizei primcount);
+	typedef void APIENTRY (*proc_type)(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDrawTransformFeedbackStreamInstanced" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDrawTransformFeedbackStreamInstanced" ); }
-	return (*func_ptr)( mode, id, stream, primcount );
+	return (*func_ptr)( mode, id, stream, instancecount );
 }
 
 inline void APIENTRY glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint *params)
@@ -6605,6 +6605,454 @@ inline void APIENTRY glTextureStorage3DEXT(GLuint texture, GLenum target, GLsize
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTextureStorage3DEXT" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTextureStorage3DEXT" ); }
 	return (*func_ptr)( texture, target, levels, internalformat, width, height, depth );
+}
+
+inline void APIENTRY glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
+{
+	typedef void APIENTRY (*proc_type)(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDebugMessageControl" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDebugMessageControl" ); }
+	return (*func_ptr)( source, type, severity, count, ids, enabled );
+}
+
+inline void APIENTRY glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf)
+{
+	typedef void APIENTRY (*proc_type)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDebugMessageInsert" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDebugMessageInsert" ); }
+	return (*func_ptr)( source, type, id, severity, length, buf );
+}
+
+inline void APIENTRY glDebugMessageCallback(GLDEBUGPROC callback, const void *userParam)
+{
+	typedef void APIENTRY (*proc_type)(GLDEBUGPROC callback, const void *userParam);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDebugMessageCallback" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDebugMessageCallback" ); }
+	return (*func_ptr)( callback, userParam );
+}
+
+inline GLuint APIENTRY glGetDebugMessageLog(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog)
+{
+	typedef GLuint APIENTRY (*proc_type)(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetDebugMessageLog" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetDebugMessageLog" ); }
+	return (*func_ptr)( count, bufsize, sources, types, ids, severities, lengths, messageLog );
+}
+
+inline void APIENTRY glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
+{
+	typedef void APIENTRY (*proc_type)(GLenum source, GLuint id, GLsizei length, const GLchar *message);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glPushDebugGroup" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glPushDebugGroup" ); }
+	return (*func_ptr)( source, id, length, message );
+}
+
+inline void APIENTRY glPopDebugGroup(void)
+{
+	typedef void APIENTRY (*proc_type)(void);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glPopDebugGroup" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glPopDebugGroup" ); }
+	return (*func_ptr)(  );
+}
+
+inline void APIENTRY glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label)
+{
+	typedef void APIENTRY (*proc_type)(GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glObjectLabel" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glObjectLabel" ); }
+	return (*func_ptr)( identifier, name, length, label );
+}
+
+inline void APIENTRY glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+	typedef void APIENTRY (*proc_type)(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetObjectLabel" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetObjectLabel" ); }
+	return (*func_ptr)( identifier, name, bufSize, length, label );
+}
+
+inline void APIENTRY glObjectPtrLabel(const void *ptr, GLsizei length, const GLchar *label)
+{
+	typedef void APIENTRY (*proc_type)(const void *ptr, GLsizei length, const GLchar *label);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glObjectPtrLabel" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glObjectPtrLabel" ); }
+	return (*func_ptr)( ptr, length, label );
+}
+
+inline void APIENTRY glGetObjectPtrLabel(const void *ptr, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+	typedef void APIENTRY (*proc_type)(const void *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetObjectPtrLabel" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetObjectPtrLabel" ); }
+	return (*func_ptr)( ptr, bufSize, length, label );
+}
+
+inline void APIENTRY glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const void *data)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLenum internalformat, GLenum format, GLenum type, const void *data);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glClearBufferData" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glClearBufferData" ); }
+	return (*func_ptr)( target, internalformat, format, type, data );
+}
+
+inline void APIENTRY glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void *data)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void *data);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glClearBufferSubData" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glClearBufferSubData" ); }
+	return (*func_ptr)( target, internalformat, offset, size, format, type, data );
+}
+
+inline void APIENTRY glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void *data)
+{
+	typedef void APIENTRY (*proc_type)(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void *data);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glClearNamedBufferDataEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glClearNamedBufferDataEXT" ); }
+	return (*func_ptr)( buffer, internalformat, format, type, data );
+}
+
+inline void APIENTRY glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, GLsizeiptr offset, GLsizeiptr size, const void *data)
+{
+	typedef void APIENTRY (*proc_type)(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, GLsizeiptr offset, GLsizeiptr size, const void *data);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glClearNamedBufferSubDataEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glClearNamedBufferSubDataEXT" ); }
+	return (*func_ptr)( buffer, internalformat, format, type, offset, size, data );
+}
+
+inline void APIENTRY glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z)
+{
+	typedef void APIENTRY (*proc_type)(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDispatchCompute" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDispatchCompute" ); }
+	return (*func_ptr)( num_groups_x, num_groups_y, num_groups_z );
+}
+
+inline void APIENTRY glDispatchComputeIndirect(GLintptr indirect)
+{
+	typedef void APIENTRY (*proc_type)(GLintptr indirect);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glDispatchComputeIndirect" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glDispatchComputeIndirect" ); }
+	return (*func_ptr)( indirect );
+}
+
+inline void APIENTRY glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
+{
+	typedef void APIENTRY (*proc_type)(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glCopyImageSubData" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glCopyImageSubData" ); }
+	return (*func_ptr)( srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth );
+}
+
+inline void APIENTRY glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
+{
+	typedef void APIENTRY (*proc_type)(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTextureView" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTextureView" ); }
+	return (*func_ptr)( texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers );
+}
+
+inline void APIENTRY glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
+{
+	typedef void APIENTRY (*proc_type)(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glBindVertexBuffer" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glBindVertexBuffer" ); }
+	return (*func_ptr)( bindingindex, buffer, offset, stride );
+}
+
+inline void APIENTRY glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
+{
+	typedef void APIENTRY (*proc_type)(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexAttribFormat" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexAttribFormat" ); }
+	return (*func_ptr)( attribindex, size, type, normalized, relativeoffset );
+}
+
+inline void APIENTRY glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+	typedef void APIENTRY (*proc_type)(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexAttribIFormat" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexAttribIFormat" ); }
+	return (*func_ptr)( attribindex, size, type, relativeoffset );
+}
+
+inline void APIENTRY glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+	typedef void APIENTRY (*proc_type)(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexAttribLFormat" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexAttribLFormat" ); }
+	return (*func_ptr)( attribindex, size, type, relativeoffset );
+}
+
+inline void APIENTRY glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
+{
+	typedef void APIENTRY (*proc_type)(GLuint attribindex, GLuint bindingindex);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexAttribBinding" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexAttribBinding" ); }
+	return (*func_ptr)( attribindex, bindingindex );
+}
+
+inline void APIENTRY glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
+{
+	typedef void APIENTRY (*proc_type)(GLuint bindingindex, GLuint divisor);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexBindingDivisor" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexBindingDivisor" ); }
+	return (*func_ptr)( bindingindex, divisor );
+}
+
+inline void APIENTRY glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
+{
+	typedef void APIENTRY (*proc_type)(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexArrayBindVertexBufferEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexArrayBindVertexBufferEXT" ); }
+	return (*func_ptr)( vaobj, bindingindex, buffer, offset, stride );
+}
+
+inline void APIENTRY glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
+{
+	typedef void APIENTRY (*proc_type)(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexArrayVertexAttribFormatEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexArrayVertexAttribFormatEXT" ); }
+	return (*func_ptr)( vaobj, attribindex, size, type, normalized, relativeoffset );
+}
+
+inline void APIENTRY glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+	typedef void APIENTRY (*proc_type)(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexArrayVertexAttribIFormatEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexArrayVertexAttribIFormatEXT" ); }
+	return (*func_ptr)( vaobj, attribindex, size, type, relativeoffset );
+}
+
+inline void APIENTRY glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+	typedef void APIENTRY (*proc_type)(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexArrayVertexAttribLFormatEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexArrayVertexAttribLFormatEXT" ); }
+	return (*func_ptr)( vaobj, attribindex, size, type, relativeoffset );
+}
+
+inline void APIENTRY glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex)
+{
+	typedef void APIENTRY (*proc_type)(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexArrayVertexAttribBindingEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexArrayVertexAttribBindingEXT" ); }
+	return (*func_ptr)( vaobj, attribindex, bindingindex );
+}
+
+inline void APIENTRY glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor)
+{
+	typedef void APIENTRY (*proc_type)(GLuint vaobj, GLuint bindingindex, GLuint divisor);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexArrayVertexBindingDivisorEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexArrayVertexBindingDivisorEXT" ); }
+	return (*func_ptr)( vaobj, bindingindex, divisor );
+}
+
+inline void APIENTRY glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLenum pname, GLint param);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glFramebufferParameteri" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glFramebufferParameteri" ); }
+	return (*func_ptr)( target, pname, param );
+}
+
+inline void APIENTRY glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint *params)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLenum pname, GLint *params);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetFramebufferParameteriv" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetFramebufferParameteriv" ); }
+	return (*func_ptr)( target, pname, params );
+}
+
+inline void APIENTRY glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param)
+{
+	typedef void APIENTRY (*proc_type)(GLuint framebuffer, GLenum pname, GLint param);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glNamedFramebufferParameteriEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glNamedFramebufferParameteriEXT" ); }
+	return (*func_ptr)( framebuffer, pname, param );
+}
+
+inline void APIENTRY glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
+{
+	typedef void APIENTRY (*proc_type)(GLuint framebuffer, GLenum pname, GLint *params);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetNamedFramebufferParameterivEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetNamedFramebufferParameterivEXT" ); }
+	return (*func_ptr)( framebuffer, pname, params );
+}
+
+inline void APIENTRY glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetInternalformati64v" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetInternalformati64v" ); }
+	return (*func_ptr)( target, internalformat, pname, bufSize, params );
+}
+
+inline void APIENTRY glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth)
+{
+	typedef void APIENTRY (*proc_type)(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glInvalidateTexSubImage" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glInvalidateTexSubImage" ); }
+	return (*func_ptr)( texture, level, xoffset, yoffset, zoffset, width, height, depth );
+}
+
+inline void APIENTRY glInvalidateTexImage(GLuint texture, GLint level)
+{
+	typedef void APIENTRY (*proc_type)(GLuint texture, GLint level);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glInvalidateTexImage" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glInvalidateTexImage" ); }
+	return (*func_ptr)( texture, level );
+}
+
+inline void APIENTRY glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length)
+{
+	typedef void APIENTRY (*proc_type)(GLuint buffer, GLintptr offset, GLsizeiptr length);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glInvalidateBufferSubData" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glInvalidateBufferSubData" ); }
+	return (*func_ptr)( buffer, offset, length );
+}
+
+inline void APIENTRY glInvalidateBufferData(GLuint buffer)
+{
+	typedef void APIENTRY (*proc_type)(GLuint buffer);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glInvalidateBufferData" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glInvalidateBufferData" ); }
+	return (*func_ptr)( buffer );
+}
+
+inline void APIENTRY glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLsizei numAttachments, const GLenum *attachments);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glInvalidateFramebuffer" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glInvalidateFramebuffer" ); }
+	return (*func_ptr)( target, numAttachments, attachments );
+}
+
+inline void APIENTRY glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glInvalidateSubFramebuffer" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glInvalidateSubFramebuffer" ); }
+	return (*func_ptr)( target, numAttachments, attachments, x, y, width, height );
+}
+
+inline void APIENTRY glMultiDrawArraysIndirect(GLenum mode, const void *indirect, GLsizei drawcount, GLsizei stride)
+{
+	typedef void APIENTRY (*proc_type)(GLenum mode, const void *indirect, GLsizei drawcount, GLsizei stride);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glMultiDrawArraysIndirect" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glMultiDrawArraysIndirect" ); }
+	return (*func_ptr)( mode, indirect, drawcount, stride );
+}
+
+inline void APIENTRY glMultiDrawElementsIndirect(GLenum mode, GLenum type, const void *indirect, GLsizei drawcount, GLsizei stride)
+{
+	typedef void APIENTRY (*proc_type)(GLenum mode, GLenum type, const void *indirect, GLsizei drawcount, GLsizei stride);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glMultiDrawElementsIndirect" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glMultiDrawElementsIndirect" ); }
+	return (*func_ptr)( mode, type, indirect, drawcount, stride );
+}
+
+inline void APIENTRY glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint *params)
+{
+	typedef void APIENTRY (*proc_type)(GLuint program, GLenum programInterface, GLenum pname, GLint *params);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetProgramInterfaceiv" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetProgramInterfaceiv" ); }
+	return (*func_ptr)( program, programInterface, pname, params );
+}
+
+inline GLuint APIENTRY glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+	typedef GLuint APIENTRY (*proc_type)(GLuint program, GLenum programInterface, const GLchar *name);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetProgramResourceIndex" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetProgramResourceIndex" ); }
+	return (*func_ptr)( program, programInterface, name );
+}
+
+inline void APIENTRY glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
+{
+	typedef void APIENTRY (*proc_type)(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetProgramResourceName" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetProgramResourceName" ); }
+	return (*func_ptr)( program, programInterface, index, bufSize, length, name );
+}
+
+inline void APIENTRY glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params)
+{
+	typedef void APIENTRY (*proc_type)(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetProgramResourceiv" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetProgramResourceiv" ); }
+	return (*func_ptr)( program, programInterface, index, propCount, props, bufSize, length, params );
+}
+
+inline GLint APIENTRY glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar *name)
+{
+	typedef GLint APIENTRY (*proc_type)(GLuint program, GLenum programInterface, const GLchar *name);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetProgramResourceLocation" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetProgramResourceLocation" ); }
+	return (*func_ptr)( program, programInterface, name );
+}
+
+inline GLint APIENTRY glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+	typedef GLint APIENTRY (*proc_type)(GLuint program, GLenum programInterface, const GLchar *name);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetProgramResourceLocationIndex" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetProgramResourceLocationIndex" ); }
+	return (*func_ptr)( program, programInterface, name );
+}
+
+inline void APIENTRY glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding)
+{
+	typedef void APIENTRY (*proc_type)(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glShaderStorageBlockBinding" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glShaderStorageBlockBinding" ); }
+	return (*func_ptr)( program, storageBlockIndex, storageBlockBinding );
+}
+
+inline void APIENTRY glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTexBufferRange" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTexBufferRange" ); }
+	return (*func_ptr)( target, internalformat, buffer, offset, size );
+}
+
+inline void APIENTRY glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+	typedef void APIENTRY (*proc_type)(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTextureBufferRangeEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTextureBufferRangeEXT" ); }
+	return (*func_ptr)( texture, target, internalformat, buffer, offset, size );
+}
+
+inline void APIENTRY glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTexStorage2DMultisample" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTexStorage2DMultisample" ); }
+	return (*func_ptr)( target, samples, internalformat, width, height, fixedsamplelocations );
+}
+
+inline void APIENTRY glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTexStorage3DMultisample" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTexStorage3DMultisample" ); }
+	return (*func_ptr)( target, samples, internalformat, width, height, depth, fixedsamplelocations );
+}
+
+inline void APIENTRY glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+	typedef void APIENTRY (*proc_type)(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTextureStorage2DMultisampleEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTextureStorage2DMultisampleEXT" ); }
+	return (*func_ptr)( texture, target, samples, internalformat, width, height, fixedsamplelocations );
+}
+
+inline void APIENTRY glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+	typedef void APIENTRY (*proc_type)(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTextureStorage3DMultisampleEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTextureStorage3DMultisampleEXT" ); }
+	return (*func_ptr)( texture, target, samples, internalformat, width, height, depth, fixedsamplelocations );
 }
 
 inline void APIENTRY glBlendColorEXT(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
@@ -7879,6 +8327,22 @@ inline void APIENTRY glPixelTransformParameterfvEXT(GLenum target, GLenum pname,
 	return (*func_ptr)( target, pname, params );
 }
 
+inline void APIENTRY glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, GLint *params)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLenum pname, GLint *params);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetPixelTransformParameterivEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetPixelTransformParameterivEXT" ); }
+	return (*func_ptr)( target, pname, params );
+}
+
+inline void APIENTRY glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, GLfloat *params)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLenum pname, GLfloat *params);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glGetPixelTransformParameterfvEXT" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glGetPixelTransformParameterfvEXT" ); }
+	return (*func_ptr)( target, pname, params );
+}
+
 inline void APIENTRY glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLbyte blue)
 {
 	typedef void APIENTRY (*proc_type)(GLbyte red, GLbyte green, GLbyte blue);
@@ -8735,9 +9199,9 @@ inline void APIENTRY glVertexWeightfvEXT(const GLfloat *weight)
 	return (*func_ptr)( weight );
 }
 
-inline void APIENTRY glVertexWeightPointerEXT(GLsizei size, GLenum type, GLsizei stride, const GLvoid *pointer)
+inline void APIENTRY glVertexWeightPointerEXT(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-	typedef void APIENTRY (*proc_type)(GLsizei size, GLenum type, GLsizei stride, const GLvoid *pointer);
+	typedef void APIENTRY (*proc_type)(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVertexWeightPointerEXT" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVertexWeightPointerEXT" ); }
 	return (*func_ptr)( size, type, stride, pointer );
@@ -11487,9 +11951,9 @@ inline void APIENTRY glVertexAttribs4hvNV(GLuint index, GLsizei n, const GLhalfN
 	return (*func_ptr)( index, n, v );
 }
 
-inline void APIENTRY glPixelDataRangeNV(GLenum target, GLsizei length, GLvoid *pointer)
+inline void APIENTRY glPixelDataRangeNV(GLenum target, GLsizei length, const GLvoid *pointer)
 {
-	typedef void APIENTRY (*proc_type)(GLenum target, GLsizei length, GLvoid *pointer);
+	typedef void APIENTRY (*proc_type)(GLenum target, GLsizei length, const GLvoid *pointer);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glPixelDataRangeNV" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glPixelDataRangeNV" ); }
 	return (*func_ptr)( target, length, pointer );
@@ -15591,9 +16055,9 @@ inline void APIENTRY glVDPAUFiniNV(void)
 	return (*func_ptr)(  );
 }
 
-inline GLvdpauSurfaceNV APIENTRY glVDPAURegisterVideoSurfaceNV(GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames)
+inline GLvdpauSurfaceNV APIENTRY glVDPAURegisterVideoSurfaceNV(const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames)
 {
-	typedef GLvdpauSurfaceNV APIENTRY (*proc_type)(GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames);
+	typedef GLvdpauSurfaceNV APIENTRY (*proc_type)(const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames);
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glVDPAURegisterVideoSurfaceNV" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glVDPAURegisterVideoSurfaceNV" ); }
 	return (*func_ptr)( vdpSurface, target, numTextureNames, textureNames );
@@ -16237,6 +16701,22 @@ inline GLboolean APIENTRY glIsImageHandleResidentNV(GLuint64 handle)
 	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glIsImageHandleResidentNV" ) );
 	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glIsImageHandleResidentNV" ); }
 	return (*func_ptr)( handle );
+}
+
+inline void APIENTRY glTexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags)
+{
+	typedef void APIENTRY (*proc_type)(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTexStorageSparseAMD" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTexStorageSparseAMD" ); }
+	return (*func_ptr)( target, internalFormat, width, height, depth, layers, flags );
+}
+
+inline void APIENTRY glTextureStorageSparseAMD(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags)
+{
+	typedef void APIENTRY (*proc_type)(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+	static proc_type func_ptr = reinterpret_cast<proc_type>( glewlle::get_proc_address( "glTextureStorageSparseAMD" ) );
+	if( !func_ptr ) { throw std::runtime_error( "glewlle error : glTextureStorageSparseAMD" ); }
+	return (*func_ptr)( texture, target, internalFormat, width, height, depth, layers, flags );
 }
 
 
