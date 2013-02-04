@@ -72,7 +72,6 @@ def make_file(name, src_file, file_list) :
 	dest_file = open( name, 'w' )
 	dest_file.write( '// ' + name.replace( '../', '' ).replace( '.hpp', '' ) + '\n' )
 	write_text_file( 'copy.txt', dest_file )
-	write_text_file( 'license.txt', dest_file )
 	guard = include_guard_str( name )
 
 	dest_file.write( \
